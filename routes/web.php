@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentCallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('orders', OrderController::class)->only(['index', 'show']);
+Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
